@@ -1,4 +1,9 @@
 'use strict';
+/*
+A promise is a pattern for handling asynchronous operations. 
+The promise allows you to call a method called "then" that 
+let's you specify the function(s) to use as the callbacks.
+*/
 
 const megabus = require('../lib');
 
@@ -31,15 +36,19 @@ if (module === require.main) {
       new megabus.Route('New York', 'Toronto'),
       new megabus.Route('Toronto', 'New York'),
     ]
+
   });
 
   finder
-    // .getTicketsPromise()
-    .getTicketsInPriceRangePromise(0, 10)
-    .then((tickets) => {
-      tickets.forEach((ticket, idx) => {
-        console.log(`[${idx + 1}] ${ticket.toString()}`);
+    .getTicketsInPriceRangePromise(0, 15) //once this is done, it calls...
+    .then((tickets) => { //the callback function
+      tickets.forEach((ticket, idx) => { //for each ticket in Promise
+        console.log(`[${idx + 1}] ${ticket.toString()}`); //print index and ticket information 
       })
+      console.log(tickets);
       console.log(`*** ${tickets.length} tickets found ***`);
     });
+    
+    finder.getTicketsPromise
+
 }
