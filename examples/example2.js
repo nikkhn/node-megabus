@@ -1,3 +1,5 @@
+/*Example of getTickets() function*/
+
 'use strict';
 
 var megabus = require('../lib');
