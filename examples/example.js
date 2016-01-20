@@ -11,9 +11,14 @@ var findTix = new megabus.TicketFinder({
     ]
 });
 
-console.log("Tickets found between " + findTix.startDate + " and " + findTix.endDate);
-findTix.getTicketsInPriceRangePromise(0,15).then(function(tickets) { //the callback function
-       tickets.forEach( function(ticket) { //for each ticket that it finds
-       console.log(ticket.toString());
-      });
-    });
+
+function getTicketsWithinPrice (minPrice, maxPrice) {
+    console.log("Tickets found between " + findTix.startDate + " and " + findTix.endDate + " between " + minPrice + "$ and " + maxPrice +"$");
+    findTix.getTicketsInPriceRangePromise(minPrice, maxPrice).then(function(tickets) { //the callback function
+        tickets.forEach( function(ticket) { //for each ticket that it finds
+            console.log(ticket.toString());
+            });
+        });
+}
+
+getTicketsWithinPrice(0,15);
